@@ -1,0 +1,23 @@
+<h1>Listing Products</h1>
+ 
+<%= link_to "New product", new_product_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Desc</th>
+    <th>Date</th>
+    <th>Maker</th>
+    <th>Stock</th>
+  </tr>
+ 
+  <% @products.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= p.desc %></td>
+      <td><%= p.date_start %></td>
+      <td><%= p.maker %></td>
+      <td><%= p.stock %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "Back", products_path %>
