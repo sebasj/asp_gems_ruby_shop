@@ -1,11 +1,37 @@
 class ProductsController < ApplicationController
     def new
+        @product = Product.new 
     end
     
     def create
-        @post = Product.new(post_params)
-        @post.save
-        redirect_to @post
+        @product = Product.new(params.require(:product).permit(:name, :desc, :date_start, :maker, :stock))
+        if @product.save
+            redirect_to @product
+        else
+            render 'new'
+        end
+    end
+
+    def edit
+        @product = Product.find(params[:id])
+    end
+
+    def update
+        @product = Product.find(params[:id])
+
+        if @product.update(params.require(:product).permit(:name, :desc, :date_start, :maker, :stock))
+            redirect_to @product
+        else
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @product = Product.find(params[:id])
+        @product.destroy
+
+        redirect_to products_path
+
     end
 
     def show
@@ -19,7 +45,7 @@ class ProductsController < ApplicationController
     
     private
         def post_params
-            params.require(:post).permit(:name, :desc, :date_start, :maker, :stock)
+            
         end
     
     
