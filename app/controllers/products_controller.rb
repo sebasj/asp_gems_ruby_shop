@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     end
     
     def create
-        @product = Product.new(params.require(:product).permit(:name, :desc, :date_start, :maker, :stock))
+        @product = Product.new(params.require(:product).permit(:name, :desc, :date_start, :maker, :stock, :category))
         if @product.save
             redirect_to @product
         else
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     def update
         @product = Product.find(params[:id])
 
-        if @product.update(params.require(:product).permit(:name, :desc, :date_start, :maker, :stock))
+        if @product.update(params.require(:product).permit(:name, :desc, :date_start, :maker, :stock, :category))
             redirect_to @product
         else
             render 'edit'
