@@ -1,4 +1,8 @@
 Shop::Application.routes.draw do
+  resources :orders do
+    resources :line_items
+  end
+
   resources :products
   
   # You can have the root of your site routed with "root"

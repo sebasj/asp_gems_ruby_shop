@@ -5,6 +5,7 @@
   <tr>
     <th>Name</th>
     <th>Desc</th>
+    <th>Category</th>
     <th>Date</th>
     <th>Maker</th>
     <th>Stock</th>
@@ -14,6 +15,7 @@
     <tr>
       <td><%= p.name %></td>
       <td><%= p.desc %></td>
+      <td><%= p.category %></td>
       <td><%= p.date_start %></td>
       <td><%= p.maker %></td>
       <td><%= p.stock %></td>
@@ -23,4 +25,4 @@
     </tr>
   <% end %>
 </table>
-<%= link_to "Back", products_path %>
+<%= link_to "Volver a inicio", root_path %>
