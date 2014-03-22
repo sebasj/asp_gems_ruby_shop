@@ -5,4 +5,5 @@ class Product < ActiveRecord::Base
     validates :stock,
                     numericality: { only_integer: true }
     has_many :line_items
+    has_many :orders, through: :line_items
 end
