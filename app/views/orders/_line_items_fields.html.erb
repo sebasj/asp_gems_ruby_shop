@@ -1,0 +1,17 @@
+
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Price</th>
+<th>Product</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><div class="field"><%= f.number_field :quantity %></div></td>
+    <td><div class="field"><%= f.number_field :price %><br /></div></td>
+    <td><div class="field"><%= f.select :product_id, options_for_select(Product.all.map{|s|[s.name, s.id]}) %></div></td>
+</tr>    
+</tbody>
+</table>
