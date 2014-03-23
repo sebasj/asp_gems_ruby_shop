@@ -10,19 +10,20 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
   end
 
   # GET /orders/new
   def new
     @order = Order.new
 
-    3.times do
-      line = @order.line_items.build
-    end
+    3.times { @order.line_items.build }
   end
 
   # GET /orders/1/edit
   def edit
+    @order = Order.find(params[:id])
+
   end
 
   # POST /orders
@@ -73,6 +74,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:status, :payment, :address, :poblation, :last_name, :first_name)
+      params.require(:order).permit(:status, :payment, :address, :poblation, :last_name, :first_name,
+          :line_items_attributes => [:product_id, :quantity, :price])
     end
 end
