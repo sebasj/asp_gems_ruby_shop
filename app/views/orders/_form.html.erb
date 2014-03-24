@@ -11,31 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :payment %><br>
-    <%= f.number_field :payment %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :poblation %><br>
-    <%= f.text_field :poblation %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="actions">
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Payment</th>
+      <th>Address</th>
+      <th>Poblation</th>
+      <th>Last name</th>
+      <th>First name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<tr>
+  <td><div class="field"><%= f.number_field :status %></div></td>
+  <td><div class="field"><%= f.number_field :payment %></div></td>
+  <td><div class="field"><%= f.text_area :address %></div></td>
+  <td><div class="field"><%= f.text_field :poblation %></div></td>
+  <td><div class="field"><%= f.text_field :last_name %></div></td>
+  <td><div class="field"> <%= f.text_field :first_name %></div></td>
+</tr>
+</tbody>
+</table>
+
+<h1>Items</h1>
+  <%= f.fields_for :line_items do |builder| %>
+    <%= render "line_items_fields", f: builder %>
+<% end %>
+
+<%= link_to_add_fields "Add line", f, :line_items %>
+
+<div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
