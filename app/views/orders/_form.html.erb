@@ -41,7 +41,7 @@
 
 <h1>Items</h1>
   <%= f.fields_for :line_items do |builder| %>
-    <%= render "line_items_fields", f: builder %>
+    <%= render "line_item_fields", f: builder %>
 <% end %>
 
 <%= link_to_add_fields "Add line", f, :line_items %>
